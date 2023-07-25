@@ -1,75 +1,50 @@
 import React, {useState} from 'react'
-import { BsCheckCircle } from "react-icons/bs";
+import { BsCheckCircle, BsCheckCircleFill } from "react-icons/bs";
 
 function Item ({itemData}) 
 {
-      function GetTimeDiff()
-      {
-        const startHour = new Date(itemData.endDate).getHours()
-        const endHour = new Date(itemData.startDate).getHours()
+    const date =  new Date(itemData.dueDate)
 
-        const startMin = new Date(itemData.endDate).getMinutes()
-        const endMin= new Date(itemData.startDate).getMinutes()
+    const monthName = date.toLocaleDateString("en-US", {
+        month: "short",
+    })
 
-        const minDiff = startMin - endMin;
-        const hourDiff= startHour - endHour
+    const dayNumeric= date.toLocaleDateString("en-US", {
+        day: "numeric"
+    })
 
-        const timeString  = `${hourDiff}:${minDiff}`
-        return(timeString);
-      }
-    
-
-    function FormatTime(dateString)
-    {
-        const date1 = new Date(dateString);
-
-        const currTime = date1.toLocaleTimeString("en-US", {
+    const formattedTime = (date.toLocaleTimeString("en-US", {
             hour: "numeric",
-            minute: "2-digit",
-          })
+            minute: "2-digit",}))
 
-          return currTime;
-    } 
+    const weekDay = (date.toLocaleDateString("en-US", { 
+        weekday: 'long'}))
 
   return (
-<div className='flex justify-center items-center'>
-    <div className='w-1/3 rounded-2xl bg-red-500 grid grid-flow-row gap-10 text-white '>
+    <div className='flex justify-center items-center'>
+        <div className='group transition-transform duration-200 hover:scale-105 w-80 shadow-md shadow-black/30 px-4 py-1 h-20 rounded-2xl bg-lime-500 hover:bg-lime-300 grid grid-flow-col text-green-800'>
 
-    <div className='mx-4 my-2 grid grid-flow-row gap-5'>
-
-        {/* Top Half */}
-        <div className='grid grid-flow-col items-stretch'>
-            <div className='w-3/4'>
-                <h1>{itemData.description}</h1>
+            <div className='grid grid-flow-col my-auto'>
+                <div className='h-flex w-15'>
+                    <h1 className='text-xs'>{weekDay}</h1>
+                    <h1 className='text-sm font-semibold'>{`${monthName} ${dayNumeric}`}</h1>
+                    <h1 className='text-sm font-bold'>{formattedTime}</h1>      
+                </div>        
             </div>
 
-        <div className='relative'>
-            <button className='absolute top-0 right-0'>
-                <BsCheckCircle
-                    className='text-gray-900 hover:text-gray-200'
+            <div className='my-auto w-15'>
+                <h1 className='text-xl font-bold'>Clean</h1>
+                <h1 className='h-flex w-full text-md font-semibold'>{itemData.description}</h1>
+            </div>
+
+            <div className='relative'>
+                <button className='absolute right-0 top-0 bottom-0'>
+                    <BsCheckCircle
+                    className='text-lime-200 transition-transform duration-200 group-hover:text-green-800 group-hover:scale-110'
                     size={35}/>
-            </button>
-            </div>
-        </div>
-
-        {/* Bottom Half */}
-        <div className='grid grid-flow-col items-stretch mb-2'>
-            <div className=''>
-                <h1 className='font-semibold'>{FormatTime(itemData.startDate)}</h1>
-                <p className='text-xs font-semibold'>Start</p>
+                </button>
             </div>
 
-            <div className='bg-white text-red-500 rounded-full text-center flex justify-center items-center my-2 mx-2'>
-                <h1>{GetTimeDiff(itemData.startDate, itemData.endDate)}</h1>
-            </div>
-
-            <div className='text-right'>
-                <h1 className='font-semibold'>{FormatTime(itemData.endDate)}</h1>
-                <p className='text-xs font-semibold'>End</p>
-            </div>
-        </div>
-
-        </div>
         </div>
     </div>
   )

@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react'
 
 function Header() 
 {
-
     const[date, SetDate] = useState(new Date());
 
     function refreshClock() {
@@ -18,10 +17,6 @@ function Header()
       }, [date]);
 
     let today = new Date();
-
-    const monthNumeric = today.toLocaleDateString("en-US", {
-        month: "2-digit"
-    })
 
     const dayNumeric= today.toLocaleDateString("en-US", {
         day: "numeric"

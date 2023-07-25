@@ -2,17 +2,21 @@
     "items": [
       {
         "id": 1,
-        "description": "Meeting with Juan",
-        
-        "startDate": "December 17, 1995 15:00", 
-        "endDate": "December 17, 1995 16:45"      
+        "description": "Meeting with Juan",  
+        "dueDate": "December 11 2023, 15:00", 
+        "priority": 0    
       },
       {
         "id": 2,
         "description": "Hair Cut",
-        
-        "startDate": "December 17, 1995 16:00", 
-        "endDate": "December 17, 1995 16:20"      
+        "dueDate": "May 17 2024 18:15", 
+        "priority": 2 
+      },
+      {
+        "id": 2,
+        "description": "Organize desk",
+        "dueDate": "March 8, 2024 12:00", 
+        "priority": 2 
       }
-    ]
+    ]      
   }
