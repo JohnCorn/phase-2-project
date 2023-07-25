@@ -38,9 +38,9 @@ function Header()
     
 
   return (
-    <div className='mx-5 grid grid-flow-col justify-center gap-5'>
+    <div className='mx-5 grid grid-flow-col justify-center items-center gap-5'>
 
-        <div className='mx-auto h-full items-center'>
+        <div className='mx-auto h-full'>
             <h1 className='font-semibold text-md'>
                 {weekDay}
             </h1>
@@ -53,10 +53,8 @@ function Header()
                 {(monthName).toUpperCase()}
             </h1>
         </div>
-
-        <div className='flex h-full my-auto items-center'>
-            <div className='bg-gray-300 rounded-full w-1 h-2/3'/>
-        </div>
+        
+        <div className='bg-gray-300 rounded-full w-1 h-2/3'/>
 
         <div className='flex h-full items-center'> 
             <div>
