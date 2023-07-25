@@ -8,23 +8,28 @@ function App()
   const [isOpen, setIsOpen] = useState(false)
   const [items, setItems] = useState([])
 
-  const blurBgClassName = " blur-lg brightness-50";
+  const blurBgClassName = " blur-sm";
 
   useEffect(() => {
-    fetch("http://localhost:3000/toys/")
+    fetch("http://localhost:3000/items/")
     .then(response => response.json())
     .then(data => setItems(data))
 }, [])
 
 
   return (
-    <div className='absolute w-screen h-screen'>
-      <AddItem isOpen={isOpen}/>
+    <div className='absolute w-screen h-screen bg-stone-200'>
+            <AddItem 
+      isOpen={isOpen}
+      setIsOpen={setIsOpen}
+      />
       <div className={"w-screen h-screen"  + (isOpen ? blurBgClassName : "")}>
       <Header/>
       <ItemList 
         items={items}
+        setIsOpen={setIsOpen}
       />
+
       </div>
     </div>
   );

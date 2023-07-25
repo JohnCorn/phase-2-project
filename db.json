@@ -1,16 +1,18 @@
 {
-    "toys": [
+    "items": [
       {
         "id": 1,
-        "name": "Woody",
-        "image": "http://www.pngmart.com/files/3/Toy-Story-Woody-PNG-Photos.png",
-        "likes": 8
+        "description": "Meeting with Juan",
+        
+        "startDate": "December 17, 1995 15:00", 
+        "endDate": "December 17, 1995 16:45"      
       },
       {
         "id": 2,
-        "name": "Buzz Lightyear",
-        "image": "http://www.pngmart.com/files/6/Buzz-Lightyear-PNG-Transparent-Picture.png",
-        "likes": 14
+        "description": "Hair Cut",
+        
+        "startDate": "December 17, 1995 16:00", 
+        "endDate": "December 17, 1995 16:20"      
       }
     ]
   }

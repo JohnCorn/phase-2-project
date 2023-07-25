@@ -1,41 +1,28 @@
 import React from 'react'
+import { IoMdCloseCircleOutline,  IoMdCloseCircle} from "react-icons/io";
 
-function AddItem({isOpen}) {
+function AddItem({isOpen, setIsOpen}) {
     /* TODO:
     - make this a card of its own
     -all user to select a bunch of different 
     settings before adding it to the heap
 */
 
-return (    
-    <div >
-    </div>
-);
-
 if (isOpen)
 {
-  return (
-        <div className='absolute w-full flex justify-center mt-6 mb-3 z-10'>
-
-            <div className='grid grid-flow-col justify-center'>
-
-                <div>
-                    <form className="bg-gray-300 rounded-lg px-4 h-10 flex items-center justify-center">
-                        <label>
-                            Name:
-                            <input
-                                className='bg-white rounded-full'
-                                type="text" name="name" />
-                            <select value="grapefruit" onChange={"this.handleChange"}>
-                                <option value="grapefruit">Grapefruit</option>
-                                <option value="lime">Lime</option>
-                                <option value="coconut">Coconut</option>
-                                <option value="mango">Mango</option>
-                            </select>
-                        </label>
-                        <input type="submit" value="+" />
-                    </form>
-            </div>
+    return (
+        <div className='absolute inset-0 z-40'>
+            <div className='flex justify-center items-center h-full'>
+                
+                <div className="bg-blue-300 h-10 w-10">
+                    <h1>Fill in</h1>
+                    <button>
+        <IoMdCloseCircleOutline
+        onClick={() => setIsOpen(false)}
+        className='text-gray-400 hover:text-gray-600'
+          size={45}/>
+      </button>
+                </div>
 
             </div>
         </div>
@@ -44,7 +31,7 @@ if (isOpen)
   else
   {
     return (    
-        <div className='w-full flex justify-center mt-6 mb-3'>
+        <div>
         </div>
     )
   }
