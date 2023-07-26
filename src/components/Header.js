@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 
-function Header() 
-{
+const Header = () => {
+    
     const[date, SetDate] = useState(new Date());
 
     function refreshClock() {
@@ -10,7 +10,6 @@ function Header()
 
     useEffect(() => {
         const timerId = setInterval(refreshClock, 1000);
-        console.log("InEffect");
         return function cleanup() {
           clearInterval(timerId);
         };

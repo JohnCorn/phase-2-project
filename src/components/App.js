@@ -1,36 +1,48 @@
 import React,{useEffect, useState} from "react";
 import Header from "./Header";
-import AddItem from "./AddBar";
+import AddItem from "./AddItem";
 import ItemList from "./ItemList";
+import Confetti from './Confetti';
 
-function App() 
-{
-  const [isOpen, setIsOpen] = useState(false)
+const App = () => {
   const [items, setItems] = useState([])
-
-  const blurBgClassName = " blur-sm";
 
   useEffect(() => {
     fetch("http://localhost:3000/items/")
     .then(response => response.json())
     .then(data => setItems(data))
-}, [])
+  }, [])
 
+  function AddItems(description, dueDate, priority)
+  {
+    console.log("AddItems")
+
+    const configObj = {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        title: "Titanic"
+      })
+     }
+     
+     fetch('http://localhost:3000/items', configObj)
+      .then(res => res.json())
+      .then(data => setItems(data))
+      // TODO: clear form
+  }
+
+  function HandleRemoveItem(id) {
+    const filterItems = items.filter((item) => item.id !== id);
+    setItems(filterItems);
+  }
 
   return (
     <div className='absolute w-screen h-screen bg-stone-200'>
-            <AddItem 
-      isOpen={isOpen}
-      setIsOpen={setIsOpen}
-      />
-      <div className={"w-screen h-screen"  + (isOpen ? blurBgClassName : "")}>
-      <Header/>
+      <Header/> 
       <ItemList 
-        items={items}
-        setIsOpen={setIsOpen}
+        items={items} 
+        removeItem={HandleRemoveItem}
       />
-
-      </div>
     </div>
   );
 }

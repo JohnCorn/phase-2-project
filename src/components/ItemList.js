@@ -2,7 +2,7 @@ import React from 'react'
 import Item from './Item'
 import { IoIosAddCircle } from "react-icons/io";
 
-function ItemList({items,setIsOpen}) 
+function ItemList({items, removeItem}) 
 {
 
   const buttonClass = "w-80 h-20 rounded-2xl border-4 border-gray-400/20 bg-gray-400/10 flex justify-center items-center py-7 " + 
@@ -10,17 +10,18 @@ function ItemList({items,setIsOpen})
 
   return (
     <div 
-    onClick={() => setIsOpen(true)}
     className='grid grid-flow-row gap-2 mt-5'>
       
         { items.map((item) => (
           <Item
           key={item.id}
           itemData ={item}
+          removeItem={removeItem}
           />
         ))}
 
-      <div className='flex justify-center items-center'>
+      <div className='flex justify-center items-center'
+       onClick={() => console.log("adding item")}>
         <div className={buttonClass}>
           <button>
             <IoIosAddCircle
