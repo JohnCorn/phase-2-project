@@ -3,6 +3,7 @@ import Header from "./Header";
 import AddItem from "./AddItem";
 import ItemList from "./ItemList";
 import Confetti from './Confetti';
+import { Route, Switch } from "react-router-dom";
 
 const App = () => {
   const [items, setItems] = useState([])
@@ -38,11 +39,21 @@ const App = () => {
 
   return (
     <div className='absolute w-screen h-screen bg-stone-200'>
+      <Switch>
+        <Route exact path="/">
+          <Header/> 
+        </Route>
+
+      <Route exact path="/home">
       <Header/> 
-      <ItemList 
-        items={items} 
-        removeItem={HandleRemoveItem}
-      />
+
+          <ItemList 
+            items={items} 
+            removeItem={HandleRemoveItem}
+          />
+        </Route>
+
+      </Switch>
     </div>
   );
 }
