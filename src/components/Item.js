@@ -1,12 +1,14 @@
 import React, {useState} from 'react'
 import { BsCheckCircle, BsCheckCircleFill } from "react-icons/bs";
 import {motion} from 'framer-motion';
+import {textPriorityColor,bgPriorityColor,iconPriorityColor} from "./color_info"
 
-function Item ({itemData, removeItem}) 
+function Item ({itemData: {id, description, dueDate, priority}, removeItem, itemComplete}) 
 {
+
     const [complete, setComplete] = useState(false);
 
-    const date =  new Date(itemData.dueDate)
+    const date =  new Date(dueDate)
 
     const monthName = date.toLocaleDateString("en-US", {
         month: "short",
@@ -26,24 +28,32 @@ function Item ({itemData, removeItem})
     function OnComplete(latest) 
     {
         if (latest.scale === 0)
-            removeItem(itemData.id)
+        {
+            removeItem(id)
+            itemComplete()
+        }
     }
 
   return (
-    <div className='flex justify-center items-center'>     
-        <motion.div
-            animate={{ 
-                scale: complete ? 0 : 1, 
-            }}
-            transition={{ 
-                delay: 0.125, 
-                duration: 0.2,
-                ease: "backIn" 
-            }}
-            onAnimationComplete={OnComplete}
+    <motion.div 
+    layout
+    // initial={{ scale: 0.8, opacity: 0 }}
+    animate={{ 
+        scale: complete ? 0: 1, 
+        opacity: complete ? 0: 1
+    }}
+    transition={{ 
+        delay: 0.2,
+        ease: "backIn",
+        layout: { duration: 0.15,  delay: 0.125, type: "spring", stiffness: 400, damping: 17}
+     }}
+
+    onAnimationComplete={OnComplete}
+    className='flex justify-center items-center'>     
+        <div
         >
             <div 
-            className='transition-transform duration-200  w-80 shadow-md shadow-black/30 px-4 py-1 h-20 rounded-2xl bg-lime-500 grid grid-flow-col text-green-800'>
+            className={bgPriorityColor(priority) + textPriorityColor(priority) + 'transition-transform duration-200  w-80 shadow-md shadow-black/30 px-4 py-1 h-20 rounded-2xl grid grid-flow-col'}>
                 <div className='grid grid-flow-col my-auto'>
                     <div className='h-flex w-15'>
                         <h1 className='text-xs'>{weekDay}</h1>
@@ -53,8 +63,8 @@ function Item ({itemData, removeItem})
                 </div>
 
                 <div className='my-auto w-15'>
-                    <h1 className='text-xl font-bold'>Clean</h1>
-                    <h1 className='h-flex w-full text-md font-semibold'>{itemData.description}</h1>
+                    <h1 className='text-xl font-bold'>{priority}</h1>
+                    <h1 className='h-flex w-full text-md font-semibold'>{description}</h1>
                 </div>
 
                 <div className='relative'>
@@ -63,15 +73,14 @@ function Item ({itemData, removeItem})
                         whileHover={{ scale: 1.33 }}
                         whileTap={{ scale: 0.5 }}
                         transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                        className='absolute right-0 top-0 bottom-0 text-lime-200'
+                        className={iconPriorityColor(priority) + 'absolute right-0 top-0 bottom-0'}
                     >
                         {complete ? <BsCheckCircleFill size={35}/> : <BsCheckCircle size={35}/>}
                     </motion.button>
                 </div>
             </div>
-        </motion.div>
-
-    </div>
+        </div>
+    </motion.div>
   )
 }
 

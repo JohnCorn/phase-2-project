@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 
-const Header = () => {
+function Header() 
+{
     
     const[date, SetDate] = useState(new Date());
 

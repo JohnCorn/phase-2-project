@@ -2,10 +2,11 @@ import React,{useEffect, useState} from "react";
 import Header from "./Header";
 import AddItem from "./AddItem";
 import ItemList from "./ItemList";
-import Confetti from './Confetti';
 import { Route, Switch } from "react-router-dom";
+import NavBar from "./NavBar";
 
-const App = () => {
+function App()
+{
   const [items, setItems] = useState([])
 
   useEffect(() => {
@@ -39,18 +40,24 @@ const App = () => {
 
   return (
     <div className='absolute w-screen h-screen bg-stone-200'>
+      <NavBar/>
       <Switch>
+
         <Route exact path="/">
           <Header/> 
         </Route>
 
-      <Route exact path="/home">
-      <Header/> 
+        <Route exact path="/item">
+          <Header/> 
 
           <ItemList 
             items={items} 
             removeItem={HandleRemoveItem}
           />
+        </Route>
+
+        <Route exact path="/add">
+          <h1>Add</h1>
         </Route>
 
       </Switch>

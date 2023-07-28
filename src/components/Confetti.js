@@ -2,7 +2,8 @@ import { useCallback, useEffect, useRef } from 'react';
 
 import ReactCanvasConfetti from 'react-canvas-confetti';
 
-function Confetti() {
+function Confetti({count})
+{
   const refAnimationInstance = useRef(null);
 
   const getInstance = useCallback(instance => {
@@ -18,19 +19,21 @@ function Confetti() {
       });
   }, []);
 
-  useEffect(() => fire(), []);
+  useEffect(() => fire(), [count]);
 
   const fire = useCallback(() => {
     makeShot(0.25, {
       spread: 26,
       startVelocity: 42,
-      gravity: 0.66
+      gravity: 0.66,
+      z: -100
     });
 
     makeShot(0.2, {
       spread: 60,
       startVelocity: 38,
-      gravity: 0.5
+      gravity: 0.5,
+      z: -100
     });
 
     makeShot(0.35, {
@@ -38,7 +41,8 @@ function Confetti() {
       decay: 0.91,
       scalar: 0.8,
       startVelocity: 25,
-      gravity: 0.8
+      gravity: 0.8,
+      z: -100
     });
 
     makeShot(0.1, {
@@ -46,13 +50,15 @@ function Confetti() {
       decay: 0.92,
       scalar: 1.2,
       startVelocity: 35,
-      gravity: 0.8
+      gravity: 0.8,
+      z: -100
     });
 
     makeShot(0.1, {
       spread: 120,
       startVelocity: 42,
-      gravity: 0.66
+      gravity: 0.66,
+      z: -100
     });
   }, [makeShot]);
 
