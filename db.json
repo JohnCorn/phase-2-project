@@ -1,40 +1,24 @@
 {
-    "items": [
-      {
-        "id": 1,
-        "description": "Meeting with Juan",  
-        "dueDate": "December 11 2023, 15:00", 
-        "priority": "Low"    
-      },
-      {
-        "id": 2,
-        "description": "Hair Cut",
-        "dueDate": "May 17 2024 18:15", 
-        "priority": "Medium" 
-      },
-      {
-        "id": 3,
-        "description": "Organize desk",
-        "dueDate": "March 8, 2024 12:00", 
-        "priority": "High" 
-      },
-      {
-        "id": 4,
-        "description": "Watch TV",
-        "dueDate": "May 5, 2024 13:15", 
-        "priority": "Low" 
-      },
-      {
-        "id": 5,
-        "description": "Watch TV",
-        "dueDate": "Jun 5, 2024 18:35", 
-        "priority": "Low" 
-      },
-      {
-        "id": 6,
-        "description": "Watch TV",
-        "dueDate": "May 5, 2024 13:15", 
-        "priority": "Medium" 
-      }
-    ]      
-  }
+  "items": [
+    {
+      "id": 1,
+      "description": "Set meeting w/ Juan",
+      "priority": "Low"
+    },
+    {
+      "id": 2,
+      "description": "Schedual Hair Cut",
+      "priority": "Medium"
+    },
+    {
+      "id": 3,
+      "description": "Organize desk",
+      "priority": "High"
+    },
+    {
+      "id": 4,
+      "description": "Watch TV",
+      "priority": "Low"
+    }
+  ]
+}

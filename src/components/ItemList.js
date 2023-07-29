@@ -7,7 +7,7 @@ function ItemList({items, removeItem})
 
   function HandleItemComplete()
   {
-    setCompleteCount(completeCount + 1)
+    setCompleteCount(completeCount)
   }
 
   return (

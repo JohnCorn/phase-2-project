@@ -4,7 +4,7 @@ import AddItem from "./AddItem";
 import ItemList from "./ItemList";
 import { Route, Switch } from "react-router-dom";
 import NavBar from "./NavBar";
-
+import Home from "./Home";
 function App()
 {
   const [items, setItems] = useState([])
@@ -15,25 +15,30 @@ function App()
     .then(data => setItems(data))
   }, [])
 
-  function AddItems(description, dueDate, priority)
+  function handleAddItem(item)
   {
-    console.log("AddItems")
+    console.log("AddItems", item)
 
     const configObj = {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        title: "Titanic"
-      })
+      body: JSON.stringify(item)
      }
      
      fetch('http://localhost:3000/items', configObj)
       .then(res => res.json())
-      .then(data => setItems(data))
+      .then(data => {
+        const i = [...items, data]
+        setItems(i)
+        console.log( i)
+        // TODO: we need to make a copy of the current items and 
+        // then add to it 
+      })
       // TODO: clear form
   }
 
-  function HandleRemoveItem(id) {
+  function handleRemoveItem(id) {
+    console.log("handleRemoveItem", id);
     const filterItems = items.filter((item) => item.id !== id);
     setItems(filterItems);
   }
@@ -41,23 +46,22 @@ function App()
   return (
     <div className='absolute w-screen h-screen bg-stone-200'>
       <NavBar/>
+      <Header/> 
       <Switch>
 
         <Route exact path="/">
-          <Header/> 
+          <Home/>
         </Route>
 
         <Route exact path="/item">
-          <Header/> 
-
           <ItemList 
             items={items} 
-            removeItem={HandleRemoveItem}
+            removeItem={handleRemoveItem}
           />
         </Route>
 
         <Route exact path="/add">
-          <h1>Add</h1>
+          <AddItem addItem={handleAddItem}/>
         </Route>
 
       </Switch>

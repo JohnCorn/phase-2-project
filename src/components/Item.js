@@ -5,33 +5,16 @@ import {textPriorityColor,bgPriorityColor,iconPriorityColor} from "./color_info"
 
 function Item ({itemData: {id, description, dueDate, priority}, removeItem, itemComplete}) 
 {
-
     const [complete, setComplete] = useState(false);
-
-    const date =  new Date(dueDate)
-
-    const monthName = date.toLocaleDateString("en-US", {
-        month: "short",
-    })
-
-    const dayNumeric= date.toLocaleDateString("en-US", {
-        day: "numeric"
-    })
-
-    const formattedTime = (date.toLocaleTimeString("en-US", {
-            hour: "numeric",
-            minute: "2-digit",}))
-
-    const weekDay = (date.toLocaleDateString("en-US", { 
-        weekday: 'long'}))
 
     function OnComplete(latest) 
     {
         if (latest.scale === 0)
         {
-            removeItem(id)
             itemComplete()
+            removeItem(id)
         }
+            
     }
 
   return (
@@ -54,17 +37,10 @@ function Item ({itemData: {id, description, dueDate, priority}, removeItem, item
         >
             <div 
             className={bgPriorityColor(priority) + textPriorityColor(priority) + 'transition-transform duration-200  w-80 shadow-md shadow-black/30 px-4 py-1 h-20 rounded-2xl grid grid-flow-col'}>
-                <div className='grid grid-flow-col my-auto'>
-                    <div className='h-flex w-15'>
-                        <h1 className='text-xs'>{weekDay}</h1>
-                        <h1 className='text-sm font-semibold'>{`${monthName} ${dayNumeric}`}</h1>
-                        <h1 className='text-sm font-bold'>{formattedTime}</h1>      
-                    </div>        
-                </div>
-
+                
                 <div className='my-auto w-15'>
-                    <h1 className='text-xl font-bold'>{priority}</h1>
-                    <h1 className='h-flex w-full text-md font-semibold'>{description}</h1>
+                    <h1 className='h-flex w-full  text-xl font-bold'>{description}</h1>
+                    <h1 className='text-md font-semibold'>{"Priority: " + priority}</h1>
                 </div>
 
                 <div className='relative'>
