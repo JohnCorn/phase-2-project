@@ -20,10 +20,10 @@ Run the command npm install to install the required dependencies.
 Once the installation is complete, run npm start to launch the app.
 
 ## Usage
--Click on the "Add Task" button to create a new task.
--Fill in the task details such as description, due date, and priority.
--Click "Submit" to add the task to your list.
-To mark a task as completed, click the checkbox or mark it as "Done."
+- Click on the "Add Task" button to create a new task.
+- Fill in the task details such as description, due date, and priority.
+- Click "Submit" to add the task to your list.
+- To mark a task as completed, click the checkbox or mark it as "Done."
 
 ## Contributing
 We welcome contributions to the ToDo App! If you have any bug fixes, improvements, or new features to propose, please follow these steps:
