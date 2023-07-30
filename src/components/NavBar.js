@@ -40,14 +40,19 @@ function NavBar ()
                             rotate: -15,
                             background: "white",
                             boxShadow: "3px 3px 0 rgba(0, 0, 0, 0.25)",
-
                         }}
+
                         whileTap={{ 
                             scale: 0.75,
                             rotate: 15,
-
                         }}
-                        transition={{ type: "spring", stiffness: 400, damping: 17 }}
+
+                        transition={{ 
+                            type: "spring", 
+                            stiffness: 400, 
+                            damping: 17 
+                        }}
+
                         className='h-10 w-10 rounded-md'
                     >
                         <AiFillCheckSquare 
@@ -64,14 +69,20 @@ function NavBar ()
                             rotate: -15,
                             background: "white",
                             boxShadow: "3px 3px 0 rgba(0, 0, 0, 0.25)",
-
                         }}
+
                         whileTap={{ 
                             scale: 0.75,
                             rotate: 15,
 
                         }}
-                        transition={{ type: "spring", stiffness: 400, damping: 17 }}
+
+                        transition={{ 
+                            type: "spring", 
+                            stiffness: 400, 
+                            damping: 17 
+                        }}
+
                         className='h-10 w-10 rounded-md'
                     >
                         <AiFillPlusSquare    

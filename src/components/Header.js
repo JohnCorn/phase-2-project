@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react'
 
 function Header() 
-{
-    
+{ 
     const[date, SetDate] = useState(new Date());
 
     function refreshClock() {
@@ -64,6 +63,5 @@ function Header()
     </div>
   )
 }
-
 
 export default Header

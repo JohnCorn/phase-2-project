@@ -7,17 +7,15 @@ function AddItem({addItem})
   const defaultDescription = ""
   const defaultPriority = "Low"
 
-  const[dueDate, setDueDate]=useState(defaultDueDate)
-  const[description, setDescription]=useState(defaultDescription)
-  const[priority, setPriority]=useState(defaultPriority)
+  const[dueDate, setDueDate]= useState(defaultDueDate)
+  const[description, setDescription]= useState(defaultDescription)
+  const[priority, setPriority]= useState(defaultPriority)
 
   function handleSubmit(e)
   {
     e.preventDefault();
-    console.log("onSubmit", e.target.value)
 
-
-  const newItem =
+    const newItem =
     {
       "description": description,  
       "dueDate": dueDate,
@@ -25,6 +23,8 @@ function AddItem({addItem})
     }
 
     addItem(newItem)
+
+    alert("New Item Added");
   }
 
   return (    

@@ -1,14 +1,8 @@
-import React, {useState} from 'react'
+import React from 'react'
 import Item from './Item'
 
 function ItemList({items, removeItem}) 
 {
-  const [completeCount, setCompleteCount] = useState(0)
-
-  function HandleItemComplete()
-  {
-    setCompleteCount(completeCount)
-  }
 
   return (
     <div className='grid grid-flow-row gap-2 mt-5'>    
@@ -17,7 +11,7 @@ function ItemList({items, removeItem})
           key={item.id}
           itemData ={item}
           removeItem={removeItem}
-          itemComplete={HandleItemComplete}
+
           />
         ))}
     </div>   

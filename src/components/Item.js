@@ -3,7 +3,14 @@ import { BsCheckCircle, BsCheckCircleFill } from "react-icons/bs";
 import {motion} from 'framer-motion';
 import {textPriorityColor,bgPriorityColor,iconPriorityColor} from "./color_info"
 
-function Item ({itemData: {id, description, dueDate, priority}, removeItem, itemComplete}) 
+function Item ({itemData: 
+    {
+        id, 
+        description, 
+        dueDate, 
+        priority
+    }, 
+    removeItem}) 
 {
     const [complete, setComplete] = useState(false);
 
@@ -11,7 +18,6 @@ function Item ({itemData: {id, description, dueDate, priority}, removeItem, item
     {
         if (latest.scale === 0)
         {
-            itemComplete()
             removeItem(id)
         }
             
@@ -39,8 +45,8 @@ function Item ({itemData: {id, description, dueDate, priority}, removeItem, item
             className={bgPriorityColor(priority) + textPriorityColor(priority) + 'transition-transform duration-200  w-80 shadow-md shadow-black/30 px-4 py-1 h-20 rounded-2xl grid grid-flow-col'}>
                 
                 <div className='my-auto w-15'>
+                    <h1 className='text-sm font-semibold'>{dueDate}</h1>
                     <h1 className='h-flex w-full  text-xl font-bold'>{description}</h1>
-                    <h1 className='text-md font-semibold'>{"Priority: " + priority}</h1>
                 </div>
 
                 <div className='relative'>

@@ -1,10 +1,11 @@
 import React,{useEffect, useState} from "react";
+import { Route, Switch } from "react-router-dom";
 import Header from "./Header";
 import AddItem from "./AddItem";
 import ItemList from "./ItemList";
-import { Route, Switch } from "react-router-dom";
 import NavBar from "./NavBar";
 import Home from "./Home";
+
 function App()
 {
   const [items, setItems] = useState([])
@@ -17,8 +18,6 @@ function App()
 
   function handleAddItem(item)
   {
-    console.log("AddItems", item)
-
     const configObj = {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
@@ -27,20 +26,13 @@ function App()
      
      fetch('http://localhost:3000/items', configObj)
       .then(res => res.json())
-      .then(data => {
-        const i = [...items, data]
-        setItems(i)
-        console.log( i)
-        // TODO: we need to make a copy of the current items and 
-        // then add to it 
-      })
-      // TODO: clear form
+      .then(data =>  setItems([...items, data]))
   }
 
-  function handleRemoveItem(id) {
-    console.log("handleRemoveItem", id);
-    const filterItems = items.filter((item) => item.id !== id);
-    setItems(filterItems);
+  function handleRemoveItem(id) 
+  {
+    const filterItems = items.filter((item) => item.id !== id)
+    setItems(filterItems)
   }
 
   return (
@@ -66,7 +58,7 @@ function App()
 
       </Switch>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
