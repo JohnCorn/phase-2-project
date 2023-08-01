@@ -3,13 +3,9 @@ import {motion} from 'framer-motion';
 
 function AddItem({addItem}) 
 {
-  const defaultDueDate = "Today"
-  const defaultDescription = ""
-  const defaultPriority = "Low"
-
-  const[dueDate, setDueDate]= useState(defaultDueDate)
-  const[description, setDescription]= useState(defaultDescription)
-  const[priority, setPriority]= useState(defaultPriority)
+  const[dueDate, setDueDate]= useState("Today")
+  const[description, setDescription]= useState("")
+  const[priority, setPriority]= useState("Low")
 
   function handleSubmit(e)
   {
@@ -24,6 +20,11 @@ function AddItem({addItem})
 
     addItem(newItem)
 
+    
+    setDueDate("Today");
+    setDescription("");
+    setPriority("Low");
+
     alert("New Item Added");
   }
 
@@ -36,7 +37,7 @@ function AddItem({addItem})
             <select
               value={dueDate}
               onChange={(e)=>setDueDate(e.target.value)}>      
-              <option default value="Today">Today</option>
+              <option value="Today">Today</option>
               <option value="Tommorrow">Tommorrow</option>
               <option value="Later">Later</option>
             </select>
@@ -45,7 +46,7 @@ function AddItem({addItem})
           <select
           value={priority}
           onChange={(e)=>setPriority(e.target.value)}>
-            <option default value="Low">Low</option>
+            <option value="Low">Low</option>
             <option value="Medium">Medium</option>
             <option value="High">High</option>
           </select>
@@ -53,6 +54,7 @@ function AddItem({addItem})
           <input 
             type="text" 
             name="name"
+            value={description}
             placeholder='Write Description'
             onChange={(e) =>setDescription(e.target.value)} 
           />

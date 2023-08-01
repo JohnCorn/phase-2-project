@@ -11,7 +11,6 @@ function ItemList({items, removeItem})
           key={item.id}
           itemData ={item}
           removeItem={removeItem}
-
           />
         ))}
     </div>   
