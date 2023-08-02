@@ -23,42 +23,6 @@
       "description": "Watch TV",
       "priority": "High",
       "dueDate": "Today"
-    },
-    {
-      "description": "put away shoes",
-      "dueDate": "Tommorrow",
-      "priority": "Medium",
-      "id": 5
-    },
-    {
-      "description": "test",
-      "dueDate": "Later",
-      "priority": "High",
-      "id": 6
-    },
-    {
-      "description": "",
-      "dueDate": "Today",
-      "priority": "Low",
-      "id": 7
-    },
-    {
-      "description": "test",
-      "dueDate": "Today",
-      "priority": "Low",
-      "id": 8
-    },
-    {
-      "description": "test",
-      "dueDate": "Today",
-      "priority": "Low",
-      "id": 9
-    },
-    {
-      "description": "anther",
-      "dueDate": "Later",
-      "priority": "Medium",
-      "id": 10
     }
   ]
 }

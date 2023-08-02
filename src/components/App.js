@@ -10,6 +10,8 @@ function App()
 {
   
   const [items, setItems] = useState([])
+  const [priorityFilter, setPriorityFilter] = useState("")
+  const [dueDateFilter, setdueDateFilter] = useState("")
 
   useEffect(() => {
     fetch("http://localhost:3000/items/")
@@ -32,9 +34,24 @@ function App()
 
   function handleRemoveItem(id) 
   {
-    const filterItems = items.filter((item) => item.id !== id)
-    setItems(filterItems)
+    const nonRemovedItems = items.filter((item) => item.id !== id)
+    setItems(nonRemovedItems)
   }
+
+  const filterItems = items.filter((item) =>
+  {
+      if (priorityFilter === "")
+        return true
+
+      return item.priority === priorityFilter
+    }
+    ).filter((i) => {
+    if (dueDateFilter === "")
+      return true
+
+    return i.dueDate === dueDateFilter
+  })
+
 
   return (
     <div className='absolute w-screen h-screen bg-stone-200'>
@@ -48,8 +65,12 @@ function App()
 
         <Route exact path="/item">
           <ItemList 
-            items={items} 
+            items={filterItems} 
             removeItem={handleRemoveItem}
+            priorityFilter={priorityFilter}
+            filterByPriority={setPriorityFilter}
+            dueDateFilter={dueDateFilter}
+            filterByDueDate={setdueDateFilter}
           />
         </Route>
 

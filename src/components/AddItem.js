@@ -38,7 +38,7 @@ function AddItem({addItem})
               value={dueDate}
               onChange={(e)=>setDueDate(e.target.value)}>      
               <option value="Today">Today</option>
-              <option value="Tommorrow">Tommorrow</option>
+              <option value="Tomorrow">Tomorrow</option>
               <option value="Later">Later</option>
             </select>
           </div>
